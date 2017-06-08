@@ -13,5 +13,7 @@ public interface IUserService {
 	
 	public List<User> getAllUsers();
 	
+	public int updateUser(User user); 
+	
 
 }

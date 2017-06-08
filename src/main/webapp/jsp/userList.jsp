@@ -24,6 +24,7 @@
 				<td><c:out value="${user.name }"/></td>
 				<td><c:out value="${user.age }"/></td>
 				<td><c:out value="${user.password }"/></td>
+				<td><c:out value="${user.imgurl }"></c:out></td>
 			</tr>
 		</c:forEach>
 	</table> 

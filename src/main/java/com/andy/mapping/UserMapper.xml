@@ -6,9 +6,10 @@
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="imgurl" property="imgurl" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, password, age
+    id, name, password, age, imgurl
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -17,10 +18,9 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
   
-  <select id="getAllUsers" resultMap="BaseResultMap">
-  	select * from user
+  <select id="getAllUsers" resultMap="BaseResultMap" >
+    select * from user
   </select>
-  
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from user
@@ -28,9 +28,9 @@
   </delete>
   <insert id="insert" parameterType="com.andy.pojo.User" >
     insert into user (id, name, password, 
-      age)
+      age, imgurl)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{age,jdbcType=INTEGER})
+      #{age,jdbcType=INTEGER}, #{imgurl,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.andy.pojo.User" >
     insert into user
@@ -47,6 +47,9 @@
       <if test="age != null" >
         age,
       </if>
+      <if test="imgurl != null" >
+        imgurl,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -60,6 +63,9 @@
       </if>
       <if test="age != null" >
         #{age,jdbcType=INTEGER},
+      </if>
+      <if test="imgurl != null" >
+        #{imgurl,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -75,6 +81,9 @@
       <if test="age != null" >
         age = #{age,jdbcType=INTEGER},
       </if>
+      <if test="imgurl != null" >
+        imgurl = #{imgurl,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -82,7 +91,8 @@
     update user
     set name = #{name,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
-      age = #{age,jdbcType=INTEGER}
+      age = #{age,jdbcType=INTEGER},
+      imgurl = #{imgurl,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

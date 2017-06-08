@@ -29,6 +29,12 @@
             </list>  
         </property>  
     </bean>  
+    
+    <!-- 访问静态资源 -->
+    <mvc:annotation-driven/>
+	<mvc:resources mapping="/uploads/**" location="/uploads/" />
+
+    
     <!-- 定义跳转的文件的前后缀 ，视图模式配置-->  
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
         <!-- 这里的配置我的理解是自动给后面action的方法return的字符串加上前缀和后缀，变成一个 可用的url地址 -->  
@@ -46,5 +52,6 @@
         <!-- 内存中的最大值 -->  
         <property name="maxInMemorySize" value="40960" />    
     </bean>   
+    
   
 </beans>  
